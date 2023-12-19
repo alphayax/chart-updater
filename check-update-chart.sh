@@ -37,9 +37,6 @@ echo "HELM_REPO   : ${HELM_REPO}"
 echo "GITHUB_REPO : ${GITHUB_REPO}"
 echo " "
 
-#HELM_REPO="oci://registry-1.docker.io/alphayax/medusa"
-#GITHUB_REPO="linuxserver/docker-medusa"
-
 CURRENT_APP_VERSION=$(helm show chart "${HELM_REPO}"  2>/dev/null | yq .appVersion)
 LAST_APP_VERSION=$(curl "https://api.github.com/repos/${GITHUB_REPO}/tags" 2>/dev/null | jq -r '.[0].name')
 
